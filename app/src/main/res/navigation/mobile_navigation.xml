@@ -3,23 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="pe.pcs.controlasesorados.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="pe.pcs.controlasesorados.presentation.ui.asesorado.AsesoradoFragment"
+        android:label="fragment_asesorado"
+        tools:layout="@layout/fragment_asesorado" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="pe.pcs.controlasesorados.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_maquina"
+        android:name="pe.pcs.controlasesorados.presentation.ui.maquina.MaquinaFragment"
+        android:label="@string/maquinas"
+        tools:layout="@layout/fragment_maquina" >
+        <action
+            android:id="@+id/action_nav_maquina_to_operacionMaquinaActivity"
+            app:destination="@id/operacionMaquinaActivity" />
+    </fragment>
 
+    <activity
+        android:id="@+id/operacionMaquinaActivity"
+        android:name="pe.pcs.controlasesorados.presentation.ui.maquina.OperacionMaquinaActivity"
+        android:label="activity_operacion_maquina"
+        tools:layout="@layout/activity_operacion_maquina" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </activity>
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="pe.pcs.controlasesorados.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_rutina"
+        android:name="pe.pcs.controlasesorados.presentation.ui.rutina.RutinaFragment"
+        android:label="@string/menu_rutina"
+        tools:layout="@layout/fragment_rutina" >
+        <action
+            android:id="@+id/action_nav_rutina_to_operacionRutinaActivity"
+            app:destination="@id/operacionRutinaActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/operacionRutinaActivity"
+        android:name="pe.pcs.controlasesorados.presentation.ui.rutina.OperacionRutinaActivity"
+        android:label="activity_operacion_rutina"
+        tools:layout="@layout/activity_operacion_rutina" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </activity>
+    <fragment
+        android:id="@+id/nav_ejercicio"
+        android:name="pe.pcs.controlasesorados.presentation.ui.ejercicio.EjercicioFragment"
+        android:label="@string/menu_ejercicio"
+        tools:layout="@layout/fragment_ejercicio" >
+        <action
+            android:id="@+id/action_nav_ejercicio_to_operacionEjercicioActivity"
+            app:destination="@id/operacionEjercicioActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/operacionEjercicioActivity"
+        android:name="pe.pcs.controlasesorados.presentation.ui.ejercicio.OperacionEjercicioActivity"
+        android:label="activity_operacion_ejercicio"
+        tools:layout="@layout/activity_operacion_ejercicio" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </activity>
 </navigation>

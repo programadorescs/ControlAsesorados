@@ -14,6 +14,9 @@ interface RutinaDao {
     @Query("SELECT id, descripcion FROM rutina WHERE descripcion LIKE '%' || :dato || '%'")
     fun listar(dato: String): Flow<List<RutinaEntity>>
 
+    @Query("SELECT id, descripcion FROM rutina WHERE id = :dato")
+    fun obtenerPorId(dato: Int): RutinaEntity?
+
     @Insert
     suspend fun insertar(entidad: RutinaEntity): Long
 

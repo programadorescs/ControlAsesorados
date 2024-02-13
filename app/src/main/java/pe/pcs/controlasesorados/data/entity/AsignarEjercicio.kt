@@ -3,6 +3,7 @@ package pe.pcs.controlasesorados.data.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "asignar_ejercicio",
@@ -22,6 +23,7 @@ import androidx.room.ForeignKey
     ]
 )
 data class AsignarEjercicio(
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") var id: Int = 0,
     @ColumnInfo(name = "dia") var dia: String = "",
     @ColumnInfo(name = "serie") var serie: String = "",

@@ -14,6 +14,9 @@ interface AsesoradoDao {
     @Query("SELECT id, nombre, dni, fecnac, direccion, telefono, sexo FROM asesorado WHERE nombre LIKE '%' || :dato || '%'")
     fun listar(dato: String): Flow<List<AsesoradoEntity>>
 
+    @Query("SELECT id, nombre, dni, fecnac, direccion, telefono, sexo FROM asesorado WHERE id = :dato")
+    fun obtenerPorId(dato: Int): AsesoradoEntity?
+
     @Insert
     suspend fun insertar(entidad: AsesoradoEntity): Long
 

@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import pe.pcs.controlasesorados.domain.model.Ejercicio
 
 @Entity(
     tableName = "ejercicio",
@@ -30,4 +31,11 @@ data class EjercicioEntity(
     @ColumnInfo(name = "descripcion") var descripcion: String = "",
     @ColumnInfo(name = "idrutina") var idrutina: Int = 0,
     @ColumnInfo(name = "idmaquina") var idmaquina: Int = 0
+)
+
+fun Ejercicio.toDatabase() = EjercicioEntity(
+    id = id,
+    descripcion = descripcion,
+    idrutina = idrutina,
+    idmaquina = idmaquina
 )

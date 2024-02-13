@@ -2,7 +2,16 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ControlAsesorados" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/purple_700</item>
     </style>
 
     <style name="Theme.ControlAsesorados" parent="Base.Theme.ControlAsesorados" />
@@ -15,4 +24,15 @@
     <style name="Theme.ControlAsesorados.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ControlAsesorados.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- estilo full screen para dialogfragment -->
+    <style name="FullScreenDialog" parent="ShapeAppearanceOverlay.MaterialComponents.MaterialCalendar.Window.Fullscreen">
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+    </style>
+
 </resources>

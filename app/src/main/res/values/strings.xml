@@ -8,9 +8,30 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Asesorados</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="maquinas">Maquinas | Equipos</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="acceder">Acceder</string>
+    <string name="correo">Correo</string>
+    <string name="clave">Clave</string>
+    <string name="buscar">Buscar</string>
+    <string name="nombre">Nombre</string>
+    <string name="nota_crear_cuenta">Nota: Solo se podrá crear una sola cuenta bajo esta modalidad, no olvidar el correo y clave ingresado ya que éstos datos serán necesarios para ingresar a la app.</string>
+    <string name="titulo">TITULO</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="registrar_editar_maquina">Registrar | Editar maquina</string>
+    <string name="menu_maquina">Maquinas</string>
+    <string name="registrar_editar_rutina">Registrar | Editar rutina</string>
+    <string name="menu_rutina">Rutinas</string>
+    <string name="menu_ejercicio">Ejercicios</string>
+    <string name="selecc_maquina">Selecc. maquina</string>
+    <string name="registrar_editar">Registrar | Editar</string>
+    <string name="selecc_rutina">Selecc. rutina</string>
+    <string name="rutina">Rutina</string>
+    <string name="maquina_y_o_equipo">Maquina y/o equipo</string>
+    <string name="nombre_maquina">Maquina</string>
 </resources>

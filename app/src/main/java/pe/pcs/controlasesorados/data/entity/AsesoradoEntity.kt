@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import pe.pcs.controlasesorados.domain.model.Asesorado
 
 @Entity(
     tableName = "asesorado",
@@ -18,4 +19,14 @@ data class AsesoradoEntity(
     @ColumnInfo(name = "sexo") var sexo: String = "",
     @ColumnInfo(name = "direccion") var direccion: String = "",
     @ColumnInfo(name = "telefono") var telefono: String = ""
+)
+
+fun Asesorado.toDatabase() = AsesoradoEntity(
+    id = id,
+    nombre = nombre,
+    dni = dni,
+    fecnac = fecnac,
+    sexo = sexo,
+    direccion = direccion,
+    telefono = telefono
 )

@@ -8,7 +8,7 @@ import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import pe.pcs.controlasesorados.data.entity.EjercicioEntity
-import pe.pcs.controlasesorados.data.entity.ReporteEjercicio
+import pe.pcs.controlasesorados.data.entity.report.ReporteEjercicioEntity
 
 @Dao
 interface EjercicioDao {
@@ -22,7 +22,17 @@ interface EjercicioDao {
                 "inner join rutina ON rutina.id = ejercicio.idrutina " +
                 "WHERE ejercicio.descripcion LIKE '%' || :dato || '%'"
     )
-    fun listar(dato: String): Flow<List<ReporteEjercicio>>
+    fun listar(dato: String): Flow<List<ReporteEjercicioEntity>>
+
+    @Query(
+        "SELECT maquina.id as idmaquina, maquina.descripcion as maquina, " +
+                "rutina.id as idrutina, rutina.descripcion as rutina, " +
+                "ejercicio.descripcion, ejercicio.id " +
+                "FROM maquina inner join ejercicio ON maquina.id = ejercicio.idmaquina " +
+                "inner join rutina ON rutina.id = ejercicio.idrutina " +
+                "WHERE ejercicio.id = :dato "
+    )
+    fun obtenerPorId(dato: Int): ReporteEjercicioEntity?
 
     @Insert
     suspend fun insertar(entidad: EjercicioEntity): Long
