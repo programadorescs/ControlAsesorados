@@ -46,4 +46,6 @@
     <string name="fecha_nacimiento">Fecha nacimiento</string>
     <string name="direccion">Direccion</string>
     <string name="subtitulo">Subtitulo</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
 </resources>

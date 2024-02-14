@@ -13,11 +13,9 @@ import kotlinx.coroutines.launch
 import pe.pcs.controlasesorados.R
 import pe.pcs.controlasesorados.databinding.ActivityOperacionAsesoradoBinding
 import pe.pcs.controlasesorados.domain.model.Asesorado
-import pe.pcs.controlasesorados.domain.model.Ejercicio
-import pe.pcs.controlasesorados.domain.model.Maquina
-import pe.pcs.controlasesorados.domain.model.Rutina
 import pe.pcs.controlasesorados.presentation.common.ResponseStatus
 import pe.pcs.controlasesorados.presentation.common.UtilsCommon
+import pe.pcs.controlasesorados.presentation.common.UtilsDate
 import pe.pcs.controlasesorados.presentation.common.UtilsMessage
 
 @AndroidEntryPoint
@@ -47,10 +45,21 @@ class OperacionAsesoradoActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        binding.etFecnac.setOnClickListener {
+            UtilsDate.mostrarCalendario(binding.etFecnac, supportFragmentManager)
+        }
+
         binding.fabGrabar.setOnClickListener {
+            UtilsCommon.ocultarTeclado(it)
+
             if (binding.etNombre.text.toString().trim().isEmpty() ||
-            binding.etDni.text.toString().trim().isEmpty()) {
-                UtilsMessage.showAlertOk("ADVERTENCIA", "El nombre y el nro de dni son obligatorios, debe completar la info", this)
+                binding.etDni.text.toString().trim().isEmpty()
+            ) {
+                UtilsMessage.showAlertOk(
+                    "ADVERTENCIA",
+                    "El nombre y el nro de dni son obligatorios, debe completar la info",
+                    this
+                )
                 return@setOnClickListener
             }
 
@@ -62,7 +71,7 @@ class OperacionAsesoradoActivity : AppCompatActivity() {
                     dni = binding.etDni.text.toString().trim()
                     telefono = binding.etTelefono.text.toString().trim()
                     direccion = binding.etDireccion.text.toString().trim()
-                    sexo = "Femenino"
+                    sexo = if (binding.chipMasculino.isChecked) "masculino" else "femenino"
                 }
             )
         }
@@ -71,14 +80,15 @@ class OperacionAsesoradoActivity : AppCompatActivity() {
     private fun initUiState() {
 
         viewModel.itemAsesorado.observe(this) {
-            if(it == null) return@observe
+            if (it == null) return@observe
 
             binding.etNombre.setText(it.nombre)
             binding.etDni.setText(it.dni)
             binding.etFecnac.setText(it.fecnac)
             binding.etTelefono.setText(it.telefono)
             binding.etDireccion.setText(it.direccion)
-            //binding.etNombre.setText(it.sexo)
+            if (it.sexo.lowercase() == "masculino") binding.chipMasculino.isChecked = true
+            else binding.chipFemenino.isChecked = true
         }
 
         lifecycleScope.launch {
@@ -122,6 +132,7 @@ class OperacionAsesoradoActivity : AppCompatActivity() {
                             if (it.data > 0) {
                                 UtilsCommon.limpiarEditText(binding.root.rootView)
                                 viewModel.resetItem()
+                                binding.etNombre.requestFocus()
                                 UtilsMessage.showToast("Registro grabado correctamente")
                             }
                         }
