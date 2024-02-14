@@ -1,4 +1,4 @@
-package pe.pcs.controlasesorados.presentation.ui.rutina
+package pe.pcs.controlasesorados.presentation.ui.asesorado
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,83 +11,91 @@ import androidx.navigation.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import pe.pcs.controlasesorados.R
-import pe.pcs.controlasesorados.databinding.ActivityOperacionRutinaBinding
+import pe.pcs.controlasesorados.databinding.ActivityOperacionAsesoradoBinding
+import pe.pcs.controlasesorados.domain.model.Asesorado
+import pe.pcs.controlasesorados.domain.model.Ejercicio
+import pe.pcs.controlasesorados.domain.model.Maquina
 import pe.pcs.controlasesorados.domain.model.Rutina
 import pe.pcs.controlasesorados.presentation.common.ResponseStatus
 import pe.pcs.controlasesorados.presentation.common.UtilsCommon
 import pe.pcs.controlasesorados.presentation.common.UtilsMessage
 
 @AndroidEntryPoint
-class OperacionRutinaActivity : AppCompatActivity() {
+class OperacionAsesoradoActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityOperacionRutinaBinding
-    private val viewModel by viewModels<OperacionRutinaViewModel>()
-    private val args: OperacionRutinaActivityArgs by navArgs()
+    private lateinit var binding: ActivityOperacionAsesoradoBinding
+    private val viewModel by viewModels<OperacionAsesoradoViewModel>()
+    private val args: OperacionAsesoradoActivityArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOperacionRutinaBinding.inflate(layoutInflater)
+        binding = ActivityOperacionAsesoradoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initListener()
         initUiState()
 
         if (args.id > 0)
-            viewModel.obtenerRutina(args.id)
+            viewModel.obtenerAsesorado(args.id)
     }
 
-    private fun initListener(){
+    private fun initListener() {
 
-        binding.includedLayout.toolbar.subtitle = this.getString(R.string.rutina)
+        binding.includedLayout.toolbar.subtitle = this.getString(R.string.asesorado)
 
         binding.includedLayout.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
         binding.fabGrabar.setOnClickListener {
-            UtilsCommon.ocultarTeclado(it)
-
-            if (binding.etDescripcion.text.toString().isEmpty()) {
-                UtilsMessage.showAlertOk(
-                    "ADVERTENCIA",
-                    "Todos los datos son requeridos.",
-                    this
-                )
-
+            if (binding.etNombre.text.toString().trim().isEmpty() ||
+            binding.etDni.text.toString().trim().isEmpty()) {
+                UtilsMessage.showAlertOk("ADVERTENCIA", "El nombre y el nro de dni son obligatorios, debe completar la info", this)
                 return@setOnClickListener
             }
 
             viewModel.grabar(
-                Rutina().apply {
-                    id = viewModel.item.value?.id ?: 0
-                    descripcion = binding.etDescripcion.text.toString().trim()
+                Asesorado().apply {
+                    id = viewModel.itemAsesorado.value?.id ?: 0
+                    nombre = binding.etNombre.text.toString().trim()
+                    fecnac = binding.etFecnac.text.toString().trim()
+                    dni = binding.etDni.text.toString().trim()
+                    telefono = binding.etTelefono.text.toString().trim()
+                    direccion = binding.etDireccion.text.toString().trim()
+                    sexo = "Femenino"
                 }
             )
         }
     }
 
-    private fun initUiState(){
+    private fun initUiState() {
+
+        viewModel.itemAsesorado.observe(this) {
+            if(it == null) return@observe
+
+            binding.etNombre.setText(it.nombre)
+            binding.etDni.setText(it.dni)
+            binding.etFecnac.setText(it.fecnac)
+            binding.etTelefono.setText(it.telefono)
+            binding.etDireccion.setText(it.direccion)
+            //binding.etNombre.setText(it.sexo)
+        }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiStateItem.collect {
+                viewModel.stateObtenerAsesorado.collect {
                     when (it) {
                         is ResponseStatus.Error -> {
                             binding.progressBar.isVisible = false
                             UtilsMessage.showAlertOk(
-                                "ERROR", it.message, this@OperacionRutinaActivity
+                                "ERROR",
+                                it.message,
+                                this@OperacionAsesoradoActivity
                             )
                         }
 
                         is ResponseStatus.Loading -> binding.progressBar.isVisible = true
-                        is ResponseStatus.Success -> {
-                            binding.progressBar.isVisible = false
-
-                            if (it.data == null)
-                                return@collect
-
-                            binding.etDescripcion.setText(it.data.descripcion)
-                        }
-
+                        is ResponseStatus.Success -> binding.progressBar.isVisible = false
                         null -> Unit
                     }
                 }
@@ -96,12 +104,14 @@ class OperacionRutinaActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
+                viewModel.stateGrabar.collect {
                     when (it) {
                         is ResponseStatus.Error -> {
                             binding.progressBar.isVisible = false
                             UtilsMessage.showAlertOk(
-                                "ERROR", it.message, this@OperacionRutinaActivity
+                                "ERROR",
+                                it.message,
+                                this@OperacionAsesoradoActivity
                             )
                         }
 
@@ -110,10 +120,9 @@ class OperacionRutinaActivity : AppCompatActivity() {
                             binding.progressBar.isVisible = false
 
                             if (it.data > 0) {
-                                UtilsMessage.showToast("¡Felicidades, el registro fue grabado!")
                                 UtilsCommon.limpiarEditText(binding.root.rootView)
-                                binding.etDescripcion.requestFocus()
                                 viewModel.resetItem()
+                                UtilsMessage.showToast("Registro grabado correctamente")
                             }
                         }
 
@@ -122,5 +131,6 @@ class OperacionRutinaActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 }

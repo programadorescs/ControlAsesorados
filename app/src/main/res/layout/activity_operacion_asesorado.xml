@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFondoVentana"
-    tools:context=".presentation.ui.ejercicio.OperacionEjercicioActivity">
+    tools:context=".presentation.ui.asesorado.OperacionAsesoradoActivity">
 
     <include
         android:id="@+id/included_layout"
@@ -38,7 +38,7 @@
                 android:paddingBottom="95dp">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_descripcion"
+                    android:id="@+id/til_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -53,14 +53,14 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_descripcion"
+                        android:id="@+id/et_nombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/descripcion" />
+                        android:hint="@string/nombre" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_rutina"
+                    android:id="@+id/til_dni"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -72,20 +72,20 @@
                     app:boxCornerRadiusTopStart="13dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/til_descripcion">
+                    app:layout_constraintTop_toBottomOf="@+id/til_nombre">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_rutina"
+                        android:id="@+id/et_dni"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:longClickable="false"
-                        android:focusableInTouchMode="false"
-                        android:inputType="none"
-                        android:hint="@string/rutina" />
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:hint="@string/dni" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_maquina"
+                    android:id="@+id/til_fecnac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -97,16 +97,62 @@
                     app:boxCornerRadiusTopStart="13dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/til_rutina">
+                    app:layout_constraintTop_toBottomOf="@+id/til_dni">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_maquina"
+                        android:id="@+id/et_fecnac"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:longClickable="false"
                         android:focusableInTouchMode="false"
                         android:inputType="none"
-                        android:hint="@string/maquina_y_o_equipo" />
+                        android:hint="@string/fecha_nacimiento" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:boxCornerRadiusBottomEnd="13dp"
+                    app:boxCornerRadiusBottomStart="13dp"
+                    app:boxCornerRadiusTopEnd="13dp"
+                    app:boxCornerRadiusTopStart="13dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/til_fecnac">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:longClickable="false"
+                        android:hint="@string/direccion" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:boxCornerRadiusBottomEnd="13dp"
+                    app:boxCornerRadiusBottomStart="13dp"
+                    app:boxCornerRadiusTopEnd="13dp"
+                    app:boxCornerRadiusTopStart="13dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/til_direccion">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_telefono"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:longClickable="false"
+                        android:hint="@string/telefono" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ProgressBar

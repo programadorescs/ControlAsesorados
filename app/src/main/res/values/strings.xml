@@ -32,6 +32,18 @@
     <string name="registrar_editar">Registrar | Editar</string>
     <string name="selecc_rutina">Selecc. rutina</string>
     <string name="rutina">Rutina</string>
+    <string name="ejercicio">Ejercicio</string>
     <string name="maquina_y_o_equipo">Maquina y/o equipo</string>
     <string name="nombre_maquina">Maquina</string>
+    <string name="dni">Dni</string>
+    <string name="fecnac">2024.07.19</string>
+    <string name="telefono">Telefono</string>
+    <string name="quitar">Quitar</string>
+    <string name="editar">Editar</string>
+    <string name="objetivo">Objetivo</string>
+    <string name="sexo">Sexo</string>
+    <string name="asesorado">Asesorado</string>
+    <string name="fecha_nacimiento">Fecha nacimiento</string>
+    <string name="direccion">Direccion</string>
+    <string name="subtitulo">Subtitulo</string>
 </resources>

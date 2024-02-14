@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="pe.pcs.controlasesorados.presentation.ui.asesorado.AsesoradoFragment"
-        android:label="fragment_asesorado"
-        tools:layout="@layout/fragment_asesorado" />
+        android:label="@string/asesorado"
+        tools:layout="@layout/fragment_asesorado" >
+        <action
+            android:id="@+id/action_nav_home_to_operacionAsesoradoActivity"
+            app:destination="@id/operacionAsesoradoActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_maquina"
@@ -62,6 +66,15 @@
         android:name="pe.pcs.controlasesorados.presentation.ui.ejercicio.OperacionEjercicioActivity"
         android:label="activity_operacion_ejercicio"
         tools:layout="@layout/activity_operacion_ejercicio" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </activity>
+    <activity
+        android:id="@+id/operacionAsesoradoActivity"
+        android:name="pe.pcs.controlasesorados.presentation.ui.asesorado.OperacionAsesoradoActivity"
+        android:label="activity_operacion_asesorado"
+        tools:layout="@layout/activity_operacion_asesorado" >
         <argument
             android:name="id"
             app:argType="integer" />

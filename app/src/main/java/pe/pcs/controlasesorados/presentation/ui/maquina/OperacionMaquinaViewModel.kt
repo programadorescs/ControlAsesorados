@@ -22,12 +22,12 @@ class OperacionMaquinaViewModel @Inject constructor(
     private val _item = MutableStateFlow<Maquina?>(null)
     val item: StateFlow<Maquina?> = _item
 
-    private val _uiState = MutableStateFlow<ResponseStatus<Int>>(ResponseStatus.Success(0))
-    val uiState: StateFlow<ResponseStatus<Int>> = _uiState
+    private val _uiState = MutableStateFlow<ResponseStatus<Int>?>(null)
+    val uiState: StateFlow<ResponseStatus<Int>?> = _uiState
 
     private val _uiStateItem =
-        MutableStateFlow<ResponseStatus<Maquina?>>(ResponseStatus.Loading())
-    val uiStateItem: StateFlow<ResponseStatus<Maquina?>> = _uiStateItem
+        MutableStateFlow<ResponseStatus<Maquina?>?>(null)
+    val uiStateItem: StateFlow<ResponseStatus<Maquina?>?> = _uiStateItem
 
     fun resetItem() {
         _item.value = null

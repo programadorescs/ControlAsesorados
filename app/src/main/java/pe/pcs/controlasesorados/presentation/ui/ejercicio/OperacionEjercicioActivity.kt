@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import pe.pcs.controlasesorados.R
 import pe.pcs.controlasesorados.databinding.ActivityOperacionEjercicioBinding
 import pe.pcs.controlasesorados.domain.model.Ejercicio
 import pe.pcs.controlasesorados.domain.model.Maquina
@@ -42,7 +43,9 @@ class OperacionEjercicioActivity : AppCompatActivity(),
 
     private fun initListener() {
 
-        binding.toolbar.setNavigationOnClickListener {
+        binding.includedLayout.toolbar.subtitle = this.getString(R.string.ejercicio)
+
+        binding.includedLayout.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 

@@ -7,18 +7,9 @@
     android:background="@color/colorFondoVentana"
     tools:context=".presentation.ui.rutina.OperacionRutinaActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500"
-        app:navigationIcon="@drawable/ic_back"
-        app:navigationIconTint="@color/purple_200"
-        app:subtitleCentered="true"
-        app:subtitleTextColor="@color/teal_200"
-        app:title="@string/registrar_editar_rutina"
-        app:titleCentered="true"
-        app:titleTextColor="@color/white" />
+    <include
+        android:id="@+id/included_layout"
+        layout="@layout/layout_toolbar"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

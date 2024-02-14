@@ -26,8 +26,8 @@ class OperacionRutinaViewModel @Inject constructor(
     val uiState: StateFlow<ResponseStatus<Int>?> = _uiState
 
     private val _uiStateItem =
-        MutableStateFlow<ResponseStatus<Rutina?>>(ResponseStatus.Loading())
-    val uiStateItem: StateFlow<ResponseStatus<Rutina?>> = _uiStateItem
+        MutableStateFlow<ResponseStatus<Rutina?>?>(null)
+    val uiStateItem: StateFlow<ResponseStatus<Rutina?>?> = _uiStateItem
 
     fun resetItem() {
         _item.value = null

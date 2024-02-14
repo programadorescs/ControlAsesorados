@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import pe.pcs.controlasesorados.R
 import pe.pcs.controlasesorados.databinding.ActivityOperacionMaquinaBinding
 import pe.pcs.controlasesorados.domain.model.Maquina
 import pe.pcs.controlasesorados.presentation.common.ResponseStatus
@@ -36,7 +37,10 @@ class OperacionMaquinaActivity : AppCompatActivity() {
     }
 
     private fun initListener(){
-        binding.toolbar.setNavigationOnClickListener {
+
+        binding.includedLayout.toolbar.subtitle = this.getString(R.string.maquinas)
+
+        binding.includedLayout.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
@@ -83,6 +87,8 @@ class OperacionMaquinaActivity : AppCompatActivity() {
 
                             binding.etDescripcion.setText(it.data.descripcion)
                         }
+
+                        null -> Unit
                     }
                 }
             }
@@ -110,6 +116,8 @@ class OperacionMaquinaActivity : AppCompatActivity() {
                                 viewModel.resetItem()
                             }
                         }
+
+                        null -> Unit
                     }
                 }
             }
