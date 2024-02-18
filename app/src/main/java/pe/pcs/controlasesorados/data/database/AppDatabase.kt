@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import pe.pcs.controlasesorados.data.dao.AsesoradoDao
 import pe.pcs.controlasesorados.data.dao.EjercicioDao
 import pe.pcs.controlasesorados.data.dao.MaquinaDao
+import pe.pcs.controlasesorados.data.dao.ObjetivoDao
 import pe.pcs.controlasesorados.data.dao.RutinaDao
 import pe.pcs.controlasesorados.data.dao.UsuarioDao
 import pe.pcs.controlasesorados.data.entity.AsesoradoEntity
@@ -40,5 +41,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun ejercicioDao(): EjercicioDao
 
     abstract fun usuarioDao(): UsuarioDao
+
+    abstract fun objetivoDao(): ObjetivoDao
 
 }

@@ -60,9 +60,9 @@ class AsesoradoFragment : Fragment(), AsesoradoAdapter.IOnClickListener {
         }
 
         binding.etBuscar.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
                 viewModel.listar(p0.toString().trim())
@@ -159,7 +159,19 @@ class AsesoradoFragment : Fragment(), AsesoradoAdapter.IOnClickListener {
     }
 
     override fun clickObjetivo(entidad: Asesorado) {
+        UtilsCommon.ocultarTeclado(requireView())
 
+        findNavController().navigate(
+            AsesoradoFragmentDirections.actionNavHomeToObjetivoAsesoradoActivity(
+                entidad.id,
+                entidad.nombre,
+                entidad.dni,
+                entidad.fecnac,
+                entidad.sexo,
+                entidad.direccion,
+                entidad.telefono
+            )
+        )
     }
 
 }

@@ -30,6 +30,7 @@
     <string name="menu_ejercicio">Ejercicios</string>
     <string name="selecc_maquina">Selecc. maquina</string>
     <string name="registrar_editar">Registrar | Editar</string>
+    <string name="registrar_objetivo">Registrar objetivo</string>
     <string name="selecc_rutina">Selecc. rutina</string>
     <string name="rutina">Rutina</string>
     <string name="ejercicio">Ejercicio</string>
@@ -41,6 +42,7 @@
     <string name="quitar">Quitar</string>
     <string name="editar">Editar</string>
     <string name="objetivo">Objetivo</string>
+    <string name="objetivo_del_asesorado">Objetivo del asesorado</string>
     <string name="sexo">Sexo</string>
     <string name="asesorado">Asesorado</string>
     <string name="fecha_nacimiento">Fecha nacimiento</string>
@@ -48,4 +50,12 @@
     <string name="subtitulo">Subtitulo</string>
     <string name="femenino">Femenino</string>
     <string name="masculino">Masculino</string>
+    <string name="dni_vacio">-</string>
+    <string name="telefono_vacio">-</string>
+    <string name="sexo_vacio">-</string>
+    <string name="obs">Obs</string>
+    <string name="estado">Estado</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="control">Control</string>
+    <string name="lista_de_objetivos">Lista de objetivos</string>
 </resources>

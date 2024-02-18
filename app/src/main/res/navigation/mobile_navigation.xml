@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_operacionAsesoradoActivity"
             app:destination="@id/operacionAsesoradoActivity" />
+        <action
+            android:id="@+id/action_nav_home_to_objetivoAsesoradoActivity"
+            app:destination="@id/objetivoAsesoradoActivity" />
     </fragment>
 
     <fragment
@@ -78,5 +81,32 @@
         <argument
             android:name="id"
             app:argType="integer" />
+    </activity>
+    <activity
+        android:id="@+id/objetivoAsesoradoActivity"
+        android:name="pe.pcs.controlasesorados.presentation.ui.objetivo.ObjetivoAsesoradoActivity"
+        android:label="activity_objetivo_asesorado"
+        tools:layout="@layout/activity_objetivo_asesorado" >
+        <argument
+            android:name="id_asesorado"
+            app:argType="integer" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="fecnac"
+            app:argType="string" />
+        <argument
+            android:name="sexo"
+            app:argType="string" />
+        <argument
+            android:name="direccion"
+            app:argType="string" />
+        <argument
+            android:name="telefono"
+            app:argType="string" />
     </activity>
 </navigation>

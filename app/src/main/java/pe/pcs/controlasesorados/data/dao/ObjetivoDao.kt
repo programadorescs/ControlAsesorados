@@ -14,6 +14,9 @@ interface ObjetivoDao {
     @Query("SELECT id, fecha, descripcion, obs, estado, idasesorado FROM objetivo WHERE descripcion LIKE '%' || :dato || '%' Order By id DESC")
     fun listar(dato: String): Flow<List<ObjetivoEntity>>
 
+    @Query("SELECT id, fecha, descripcion, obs, estado, idasesorado FROM objetivo WHERE idasesorado=:idAsesorado Order By id DESC")
+    fun obtenerObjetivoPorAsesorado(idAsesorado: Int): Flow<List<ObjetivoEntity>>
+
     @Insert
     suspend fun insertar(entidad: ObjetivoEntity): Long
 
@@ -22,5 +25,8 @@ interface ObjetivoDao {
 
     @Delete
     suspend fun eliminar(entidad: ObjetivoEntity): Int
+
+    @Query("UPDATE objetivo SET estado='Finalizado' WHERE id=:idObjetivo")
+    suspend fun finalizarObjetivo(idObjetivo: Int): Int
 
 }

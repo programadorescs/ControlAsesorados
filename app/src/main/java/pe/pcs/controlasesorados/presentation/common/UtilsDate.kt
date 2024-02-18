@@ -35,7 +35,7 @@ object UtilsDate {
     }
 
     fun obtenerFechaActual(): String {
-        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ROOT).format(System.currentTimeMillis())
+        return SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(System.currentTimeMillis())
     }
 
     fun obtenerFechaHoraActual(): String {

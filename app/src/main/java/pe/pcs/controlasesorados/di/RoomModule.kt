@@ -10,17 +10,20 @@ import dagger.hilt.components.SingletonComponent
 import pe.pcs.controlasesorados.data.dao.AsesoradoDao
 import pe.pcs.controlasesorados.data.dao.EjercicioDao
 import pe.pcs.controlasesorados.data.dao.MaquinaDao
+import pe.pcs.controlasesorados.data.dao.ObjetivoDao
 import pe.pcs.controlasesorados.data.dao.RutinaDao
 import pe.pcs.controlasesorados.data.dao.UsuarioDao
 import pe.pcs.controlasesorados.data.database.AppDatabase
 import pe.pcs.controlasesorados.data.repository.AsesoradoRepositoryImpl
 import pe.pcs.controlasesorados.data.repository.EjercicioRepositoryImpl
 import pe.pcs.controlasesorados.data.repository.MaquinaRepositoryImpl
+import pe.pcs.controlasesorados.data.repository.ObjetivoRepositoryImpl
 import pe.pcs.controlasesorados.data.repository.RutinaRepositoryImpl
 import pe.pcs.controlasesorados.data.repository.UsuarioRepositoryImpl
 import pe.pcs.controlasesorados.domain.repository.AsesoradoRepository
 import pe.pcs.controlasesorados.domain.repository.EjercicioRepository
 import pe.pcs.controlasesorados.domain.repository.MaquinaRepository
+import pe.pcs.controlasesorados.domain.repository.ObjetivoRepository
 import pe.pcs.controlasesorados.domain.repository.RutinaRepository
 import pe.pcs.controlasesorados.domain.repository.UsuarioRepository
 import javax.inject.Singleton
@@ -69,6 +72,12 @@ object RoomModule {
         return db.asesoradoDao()
     }
 
+    @Singleton
+    @Provides
+    fun provideObjetivoDao(db: AppDatabase): ObjetivoDao {
+        return db.objetivoDao()
+    }
+
     //******** Proveer el repository ********//
 
     @Singleton
@@ -99,6 +108,12 @@ object RoomModule {
     @Provides
     fun provideAsesoradoRepository(dao: AsesoradoDao): AsesoradoRepository {
         return AsesoradoRepositoryImpl(dao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideObjetivoRepository(dao: ObjetivoDao): ObjetivoRepository {
+        return ObjetivoRepositoryImpl(dao)
     }
 
 }
